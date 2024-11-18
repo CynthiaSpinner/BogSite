@@ -8,7 +8,7 @@ export function Header() {
           className="text-pink-700 md:text-xl font-bold tracking-tight"
           href="/"
         >
-          Cynthia's Bog Blog
+          Cynthia&apos;s Bog Blog
         </Link>
         <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>
