@@ -1,20 +1,25 @@
-import Link from "next/link";
+import { sanityFetch } from '@/sanity/lib/live'
+import { POST_QUERY } from '@/sanity/lib/queries'
+import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import Image from "next/image";
-import { PortableText } from "next-sanity";
-import { client } from "@/sanity/lib/client";
-import { POST_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import { PortableText } from "next-sanity";
 import { components } from "@/sanity/portableTextComponents";
 
-type PostIndexProps = { params: { slug: string } };
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const {data: post} = await sanityFetch({query: POST_QUERY, params: await params})
 
-const options = { next: { revalidate: 60 } };
-
-export default async function Page({ params }: PostIndexProps) {
-  const post = await client.fetch(POST_QUERY, params, options);
+  if (!post) {
+    notFound()
+  }
 
   return (
-    <main className="container mx-auto grid grid-cols-1 gap-6 py-12">
+    <main className="container mx-auto grid grid-cols-1 gap-6 p-12">
       {post?.mainImage ?
         <Image
           className="w-full aspect-[800/400]"
@@ -34,4 +39,5 @@ export default async function Page({ params }: PostIndexProps) {
     </main>
   );
 }
+
 
