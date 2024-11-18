@@ -8,7 +8,7 @@ export function Header() {
           className="text-pink-700 md:text-xl font-bold tracking-tight"
           href="/"
         >
-          Layer Caker
+          Cynthia's Bog Blog
         </Link>
         <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>
@@ -22,9 +22,9 @@ export function Header() {
           <li>
             <Link
               className="hover:text-pink-500 transition-colors"
-              href="/studio"
+              href="/NextjsCourse"
             >
-              Sanity Studio
+              Login
             </Link>
           </li>
         </ul>
