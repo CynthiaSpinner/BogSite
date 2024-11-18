@@ -1,15 +1,17 @@
-import "@/app/globals.css";
-import { SanityLive } from "@/sanity/lib/live"
+import '@/app/globals.css'
+import { Header } from '@/components/Header'
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <>
-      {children}
-      <SanityLive />
-    </>
-  );
+    <html lang="en">
+      <body className="bg-white min-h-screen">
+        <Header />
+        {children}
+      </body>
+    </html>
+  )
 }
